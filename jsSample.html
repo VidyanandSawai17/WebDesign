@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo JS</title>
+</head>
+<body>
+    <script>
+
+                //Scope of the variable
+
+                //Global scope
+                //Function scope
+                //Local scope / block scope
+
+                //Var
+                //If we declare variable outside the function scope is global
+                //If we declare variable inside the function scope is function scope
+                //If we declare variable inside the block still it has global scope
+
+                //Const & let
+                //If we declare variable outside the function scope is global
+                //If we declare variable inside the function scope is function scope
+                //If we declare variable inside the block still it has block scope
+
+                // scope in Javascript
+                //1. global --> variable declare outside the function
+                //2. function scope --> inside the function
+                // 3. block scope --> in side the block (if,for,while)
+
+                // var  --> 1995
+                // let & const --> 2015
+
+                var a = 10; //global scope
+                let x = 100; //global scope
+                function F1() {
+                var b = 20; // function scope
+                var a = 30;
+                let x = 200; // function scope
+
+
+                // var x = 1000;  this is not allowed, x is declared using let keyword
+                //let a = 300;  this is not allowed, becoz a is declared using var keyword
+
+                console.log("a = " + a);
+                console.log("x = " + x);
+                }
+
+
+                // block
+                {
+                var a = 40; // var have global scope in block
+                let x = 400; // block scope
+                }
+                F1();
+                console.log("a = " + a);
+                console.log("x = " + x);
+                //console.log("b = " + b);
+
+
+
+            //Array in Javascript
+
+            //Collection of similar data elements
+            //add/ remove/ modify an array
+
+            var names = ["Amol", "Ajay", "Kishor", "Rahul", "Rohan"];
+            var no = [10, 20, 30, 40, 50];
+            var arr = [];
+
+            arr[0] = 100;
+            arr[1] = 200;
+            var data = "<ol>";
+            for (var i = 0; i < names.length; i++) {
+            // console.log(names[i]);
+            data += "<li>" + names[i] + "</li>";
+
+            data += "</ol>";
+            console.log(data);
+            document.getElementById("d1").innerHTML = data;
+            document.getElementById("p1").innerHTML = "This is sample text in para";
+
+            // value  -> input type -> text,number,email....
+            // innerHTML  --> for any html element
+
+
+
+            var names = ["Amol", "Ajay", "Kishor", "Rahul", "Rohan"];
+
+            names.push("Suraj"); // add at last
+            names.unshift("Test name"); // add at the 1st position in an array / 0th index
+
+            names.shift(); //remove the 0th index element
+            names.pop();// remove the last element
+
+            names.splice(2, 0, "Test1", "Test2"); // insert the elements from 2nd index
+            //names.splice(3, 1, "Tes3", "Test4"); // replace the new elements from the 2nd index
+
+            var list = names.slice(2, 7); //   <6
+
+            names.sort();
+            names.reverse();
+
+            var data = "<ol>";
+            for (var i = 0; i < names.length; i++) {
+                // console.log(names[i]);
+                data += "<li>" + names[i] + "</li>";
+            }
+            data += "</ol>";
+            console.log(data);
+            document.getElementById("d1").innerHTML = data;
+            console.log(list);
+
+
+
+            // filter , map
+            var nos = [56, 34, 33, 77, 89, 22, 67, 44, 99, 10];
+
+            const result = nos.filter(checkEven);
+            const result2 = nos.filter(check);
+            function checkEven(item) {
+                if (item % 2 == 0) {
+                    return item;
+                }
+            }
+
+            function check(val) {
+                return val >= 18;
+            }
+
+            console.log(result);
+            console.log(result2);
+
+
+            const result3 = nos.map(testfunc);
+
+            function testfunc(item) {
+                var i = item;
+                return item - (i * 0.02);
+            }
+            console.log(result3);
+
+            nos.forEach(display);
+
+            function display(item) {
+                console.log(item);
+            }
+
+
+            // String & its functions
+
+            //String → It is a collection of characters
+
+            "use strict"
+            let str = "Hello to all";
+            let str2 = "welcome to javascript"
+            console.log(str.length);
+
+            console.log(str.charAt(3));
+            console.log(str.toLowerCase());
+            console.log(str.toUpperCase());
+
+            let result = str.concat(' ', str2, ' test word');
+            console.log(result);
+
+            //let res1 = str.substr(5, 7);
+            let res1 = str.substr(3);
+            console.log(res1);
+
+            var myArr = str.split(' ');
+            console.log(myArr);
+
+            // str = str.replace('l', 'L');
+            // str = str.replace(/l/g, 'L');   g --> global replace all occurrences
+            str = str.replace("all", "everyone");
+            console.log(str);
+            str.trim(); // remove the space before & after the text
+            console.log(str.indexOf('l')); // first match
+            console.log(str.lastIndexOf('e')); // last match
+
+
+
+
+
+            // Object  & array object
+
+
+
+            var student = {
+                id: 1,
+                name: 'Akshay',
+                total: 256,
+                print: function () {
+                    return this.id + " " + this.name + "  " + this.total;
+                },
+                calculate: function () {
+                    var per;
+                    per = this.total / 3;
+                    return per;
+                }
+            };
+
+            console.log(student.print());
+            console.log("Percentage is " + student.calculate().toFixed(2)); // currency,per
+
+
+
+            var emp = {
+
+                empid: 15,
+                name: 'Ram',
+                sal: 128000,
+
+                print: function () {
+                    return this.empid + " " + this.name + " " + this.sal;
+                },
+
+                calculate: function () {
+                    var bonus;
+                    bonus = this.sal * 0.20;
+                    return bonus;
+                }
+            };
+
+            console.log(emp.print());
+            console.log(emp.calculate());
+
+
+
+            //Arrow function in Javascript
+
+            //Introduced in 2015 (ES6 features)
+            //Write a short syntax of function
+
+
+            "use strict"
+            function add(a, b) {
+                return a + b;
+            }
+
+            var result = (a, b) => a + b;
+
+            console.log(result(12, 11));
+
+            var str = () => "Hello to all ";
+
+            console.log(str());
+
+            var stud = {
+                id: 1,
+                name: "Amol",
+                print: () => { return stud.id + " " + stud.name }
+            };
+
+            console.log(stud.print());
+
+
+            //Undefined & null
+
+            //Undefined → using a particular variable which is not declared
+
+            //Null → intentionally we want to keep variable/ object blank
+
+
+            //== vs === in javascript
+
+            //== → check the same value, if value matched then returns a true else false
+
+            "use strict"
+            var a = 10;
+            var b = '10';
+
+            if (a == b) {
+                console.log('true');
+            }
+            else {
+                console.log('false');
+            }
+
+            // === → check for value + data type, if both matched then returns true, else false
+
+
+            var b = '10';
+
+            if (a === b) {
+                console.log('true');
+            }
+            else {
+                console.log('false');
+            }
+
+                //Javascript Callback
+
+                //In javascript a callback function will be pass as parameter to the function
+
+                //When we want to execute function one after another then we will use callback function
+
+                //When function wait for a result & run the function once finish the execution of the first function
+
+                function add(a, b, myfunc) {
+                var sum = a + b;
+                myfunc(sum);
+                }
+
+                function display(sum) {
+                document.getElementById("d1").innerHTML = "Addition is " + sum;
+                }
+
+
+                 add(56, 44, display);
+
+
+                
+
+
+
+    </script>
+</body>
+</html>
